@@ -1,0 +1,24 @@
+language: ruby
+#bundler_args: --quiet
+rvm:
+  - rbx-2
+  - 1.9.3
+  - 2.0.0
+  - ruby-head
+script: "bundle exec rake"
+gemfile:
+  - Gemfile
+  - gemfiles/rails3.gemfile
+  - gemfiles/rails4.gemfile
+notifications:
+  recipients:
+    - nigelr@brisbanerails.com
+    - matt.connolly@tworedkites.com
+branches:
+  only:
+    - master
+#before_install:
+#  - if [[ $(ruby -v) =~ rubinius ]]; then travis_retry gem install rubysl; fi; gem list; true
+matrix:
+  allow_failures:
+    - rvm: ruby-head
